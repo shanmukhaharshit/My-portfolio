@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanmukha Harshit Valluru | Front-End Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic body styling, font families, and smooth scrolling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0D0F14;
+            color: white;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Neon accent color for highlights */
+        .neon-accent {
+            color: #3AFDA3;
+        }
+        /* Neon border for certain elements */
+        .neon-border {
+            border: 2px solid #3AFDA3;
+        }
+        /* Gradient background for the hero section */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(13,15,20,0.9) 0%, rgba(30,34,44,0.8) 100%);
+        }
+        /* Styling for skill pills */
+        .skill-pill {
+            border: 1px solid #3AFDA3;
+            transition: all 0.3s ease;
+        }
+        .skill-pill:hover {
+            background-color: rgba(58, 253, 163, 0.1);
+            transform: translateY(-2px);
+        }
+        /* Styling for project cards */
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(58, 253, 163, 0.1);
+        }
+        /* Styling for general info cards (soft skills, hobbies) */
+        .info-card-hover {
+            transition: all 0.3s ease;
+        }
+        .info-card-hover:hover {
+            background-color: rgba(58, 253, 163, 0.1); /* Slight transparent background on hover */
+            transform: translateY(-2px); /* Lift effect on hover */
+            box-shadow: 0 10px 20px rgba(58, 253, 163, 0.3); /* Neon shadow on hover */
+        }
+        /* Styling for contact cards */
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            background-color: rgba(58, 253, 163, 0.1);
+            transform: scale(1.02);
+        }
+        /* Timeline styling for education/experience sections */
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 30px;
+            height: calc(100% - 30px);
+            width: 2px;
+            background-color: #3AFDA3;
+        }
+        /* Styling for the download CV button */
+        .download-btn {
+            background: linear-gradient(135deg, #3AFDA3 0%, #2FE492 100%);
+            color: #0D0F14;
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(58, 253, 163, 0.3);
+        }
+        /* Styling for the Hire Me button */
+        .hire-me-btn {
+            border: 2px solid #3AFDA3; /* Uses neon-border */
+            color: #3AFDA3; /* Uses neon-accent color */
+            transition: all 0.3s ease;
+        }
+        .hire-me-btn:hover {
+            transform: translateY(-2px); /* Lift effect on hover */
+            box-shadow: 0 10px 20px rgba(58, 253, 163, 0.3); /* Neon shadow on hover */
+            background-color: rgba(58, 253, 163, 0.1); /* Slight transparent background on hover */
+        }
+        /* Styling for the form submit button */
+        .form-submit-btn {
+            background: linear-gradient(135deg, #3AFDA3 0%, #2FE492 100%);
+            color: #0D0F14;
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+        .form-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(58, 253, 163, 0.3);
+        }
+        /* Keyframe animation for fade-in effect */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Class to apply the fade-in animation */
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <nav class="fixed w-full bg-gray-800 bg-opacity-80 backdrop-blur-sm z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold neon-accent">Welcome, to Harshit Portfolio</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-300 hover:text-green-400 hover:font-bold transition">About</a>
+                <a href="#education" class="text-gray-300 hover:text-green-400 hover:font-bold transition">Education</a>
+                <a href="#skills" class="text-gray-300 hover:text-green-400 hover:font-bold transition">Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-green-400 hover:font-bold transition">Projects</a>
+                <a href="#work-experience" class="text-gray-300 hover:text-green-400 hover:font-bold transition">Work Experience</a>
+                <a href="#awards" class="text-gray-300 hover:text-green-400 hover:font-bold transition">Awards</a>
+                <a href="#contact-form" class="text-gray-300 hover:text-green-400 hover:font-bold transition">Contact</a>
+            </div>
+            <button class="md:hidden">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center hero-gradient pt-20">
+        <div class="container mx-auto px-6 py-20 flex flex-col items-center text-center">
+            <div class="w-full max-w-3xl">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="neon-accent">Shanmukha Harshit Valluru</span></h1>
+                <h2 class="text-xl md:text-2xl neon-accent mb-6">Front-End Developer Designer</h2>
+                <p class="text-lg mb-8">A results-driven Software Engineer with expertise in full-stack development. I build scalable software solutions that enhance user experience and operational efficiency, always striving for innovation and continuous improvement.</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://drive.google.com/file/d/1vX8qe4qOJB_toSePIS2haNyViVwFBklS/view?usp=drive_link" target="_blank" class="download-btn font-bold py-3 px-6 rounded-full flex items-center">
+                        <i class="fas fa-download mr-2"></i> Download CV
+                    </a>
+                    <a href="#contact-form" class="hire-me-btn font-bold py-3 px-6 rounded-full flex items-center">
+                        <i class="fas fa-handshake mr-2"></i> Hire Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-12 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8 text-center">Get In Touch</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="contact-card bg-gray-800 rounded-lg p-6 flex items-center">
+                    <div class="bg-gray-700 p-4 rounded-full mr-4">
+                        <i class="fas fa-envelope text-2xl neon-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">Email</h3>
+                        <a href="mailto:shanmukhaharshit@gmail.com" class="text-gray-300 hover:text-3AFDA3">shanmukhaharshit@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-card bg-gray-800 rounded-lg p-6 flex items-center">
+                    <div class="bg-gray-700 p-4 rounded-full mr-4">
+                        <i class="fas fa-phone text-2xl neon-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">Phone</h3>
+                        <a href="tel:+917972736760" class="text-gray-300 hover:text-3AFDA3">+91 7972736760</a>
+                    </div>
+                </div>
+                <div class="contact-card bg-gray-800 rounded-lg p-6 flex items-center">
+                    <div class="bg-gray-700 p-4 rounded-full mr-4">
+                        <i class="fab fa-linkedin-in text-2xl neon-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">LinkedIn</h3>
+                        <a href="https://linkedin.com/in/shanmukha-harshit-a8b91b333/" target="_blank" class="text-gray-300 hover:text-3AFDA3">linkedin.com/in/shanmukha-harshit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Education</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="relative pl-8 timeline-item mb-8">
+                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-3AFDA3"></div>
+                    <h3 class="text-xl font-bold">Bachelor's Degree in Computer Science and Engineering</h3>
+                    <p class="neon-accent">MallaReddy University • GPA: 8.5</p>
+                    <p class="text-gray-400">2022 – 2026</p>
+                </div>
+                <div class="relative pl-8 timeline-item mb-8">
+                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-3AFDA3"></div>
+                    <h3 class="text-xl font-bold">Intermediate (MPC)</h3>
+                    <p class="neon-accent">Percentage: 80%</p>
+                    <p class="text-gray-400">June 2020 – May 2022</p>
+                </div>
+                <div class="relative pl-8 timeline-item">
+                    <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-3AFDA3"></div>
+                    <h3 class="text-xl font-bold">CBSE</h3>
+                    <p class="neon-accent">Percentage: 78%</p>
+                    <p class="text-gray-400">Mar 2016 – June 2020</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 neon-accent">Programming Languages & Frameworks</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill px-4 py-2 rounded-full">Python</span>
+                        <span class="skill-pill px-4 py-2 rounded-full">JavaScript</span>
+                        <span class="skill-pill px-4 py-2 rounded-full">HTML</span>
+                        <span class="skill-pill px-4 py-2 rounded-full">React</span>
+                        <span class="skill-pill px-4 py-2 rounded-full">Node.js</span>
+                        <span class="skill-pill px-4 py-2 rounded-full">SQL</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 neon-accent">Tools & Platforms</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill px-4 py-2 rounded-full">AWS</span>
+                        <span class="skill-pill px-4 py-2 rounded-full">Git</span>
+                        <span class="skill-pill px-4 py-2 rounded-full">MongoDB</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 neon-accent">Professional Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill px-4 py-2 rounded-full">Agile Methodologies</span>
+                        <span class="skill-pill px-4 py-2 rounded-full">Project Management</span>
+                        <span class="skill-pill px-4 py-2 rounded-full">Problem-Solving</span>
+                        <span class="skill-pill px-4 py-2 rounded-full">Communication</span>
+                        <span class="skill-pill px-4 py-2 rounded-full">Team Collaboration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-mail-bulk text-6xl neon-accent"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">VoiceMail, Group Project</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded">Python</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded">Gmail API</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Reads Gmail aloud & enables voice replies for visually impaired users.</p>
+                        <a href="#" class="text-3AFDA3 hover:underline flex items-center">
+                            View Repository <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-lock text-6xl neon-accent"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Steganography, Group Project</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded">Java</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded">Image Processing</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Hides information in digital media for secure communications.</p>
+                        <a href="#" class="text-3AFDA3 hover:underline flex items-center">
+                            View Repository <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-dumbbell text-6xl neon-accent"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Self_Gym, Personal Project</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded">MERN Stack</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded">React</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded">MongoDB</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Personalized at-home workout platform with customized routines.</p>
+                        <a href="#" class="text-3AFDA3 hover:underline flex items-center">
+                            View Repository <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-file-pdf text-6xl neon-accent"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">SmartPDF Summarizer</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded">HTML</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded">NLP</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded">AI</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">AI-Powered PDF Summaries at Your Fingertips. Extracts key points from lengthy documents.</p>
+                        <a href="#" class="text-3AFDA3 hover:underline flex items-center">
+                            View Repository <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work-experience" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Work Experience</h2>
+            <div class="max-w-2xl mx-auto bg-gray-800 rounded-lg p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-gray-700 p-4 rounded-lg mr-6">
+                        <i class="fas fa-briefcase text-3xl neon-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold">Digital Marketing Intern</h3>
+                        <p class="neon-accent">Digital Connect • Jun 2022 – Aug 2022</p>
+                    </div>
+                </div>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle mt-1 mr-3 neon-accent"></i>
+                        <span>Learned digital marketing strategies like SEO, social media marketing, and online advertising.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle mt-1 mr-3 neon-accent"></i>
+                        <span>Assisted in planning campaigns and analyzing market data to support business growth.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Awards & Achievements</h2>
+            <div class="max-w-2xl mx-auto bg-gray-800 rounded-lg p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-gray-700 p-4 rounded-lg mr-6">
+                        <i class="fas fa-award text-3xl neon-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold">Poster Designer</h3>
+                        <p class="neon-accent">Malla Reddy University • 2022</p>
+                    </div>
+                </div>
+                <p class="text-gray-300">Recognized for creative excellence in poster design. Obtained a Poster Design certificate validating expertise in key design tools and principles essential for producing impactful visual communication.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Certifications & Courses</h2>
+            <div class="flex overflow-x-auto pb-6 scrollbar-hide">
+                <div class="flex space-x-6">
+                    <div class="bg-gray-800 rounded-lg p-6 min-w-[300px]">
+                        <h3 class="text-xl font-bold mb-2">Programming Fundamentals</h3>
+                        <p class="neon-accent mb-4">Coursera • July 2023</p>
+                        <a href="#" class="text-3AFDA3 hover:underline flex items-center">
+                            View Certificate <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg p-6 min-w-[300px]">
+                        <h3 class="text-xl font-bold mb-2">Understanding Large Language Models</h3>
+                        <p class="neon-accent mb-4">Microsoft • Dec 2024</p>
+                        <a href="#" class="text-3AFDA3 hover:underline flex items-center">
+                            View Certificate <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">More About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-center neon-accent">Soft Skills</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="info-card-hover bg-gray-800 rounded-lg p-6 text-center">
+                            <div class="bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-users text-2xl neon-accent"></i>
+                            </div>
+                            <h4 class="font-bold">Leadership</h4>
+                        </div>
+                        <div class="info-card-hover bg-gray-800 rounded-lg p-6 text-center">
+                            <div class="bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-clock text-2xl neon-accent"></i>
+                            </div>
+                            <h4 class="font-bold">Time Management</h4>
+                        </div>
+                        <div class="info-card-hover bg-gray-800 rounded-lg p-6 text-center">
+                            <div class="bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-random text-2xl neon-accent"></i>
+                            </div>
+                            <h4 class="font-bold">Adaptability</h4>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-center neon-accent">Hobbies</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="info-card-hover bg-gray-800 rounded-lg p-6 text-center">
+                            <div class="bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-camera text-2xl neon-accent"></i>
+                            </div>
+                            <h4 class="font-bold">Photography</h4>
+                        </div>
+                        <div class="info-card-hover bg-gray-800 rounded-lg p-6 text-center">
+                            <div class="bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-leaf text-2xl neon-accent"></i>
+                            </div>
+                            <h4 class="font-bold">Video Editor</h4>
+                        </div>
+                        <div class="info-card-hover bg-gray-800 rounded-lg p-6 text-center">
+                            <div class="bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-couch text-2xl neon-accent"></i>
+                            </div>
+                            <h4 class="font-bold">Interior Decor</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-form" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Send Me a Message</h2>
+            <div class="max-w-xl mx-auto bg-gray-800 rounded-lg p-8 shadow-lg">
+                <form action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Your Name</label>
+                        <input type="text" id="name" name="name" class="shadow appearance-none border border-gray-700 rounded w-full py-3 px-4 bg-gray-700 text-gray-200 leading-tight focus:outline-none focus:border-3AFDA3 focus:shadow-outline" placeholder="Enter your name" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Your Email</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border border-gray-700 rounded w-full py-3 px-4 bg-gray-700 text-gray-200 leading-tight focus:outline-none focus:border-3AFDA3 focus:shadow-outline" placeholder="Enter your email" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Your Message</label>
+                        <textarea id="message" name="message" rows="6" class="shadow appearance-none border border-gray-700 rounded w-full py-3 px-4 bg-gray-700 text-gray-200 leading-tight focus:outline-none focus:border-3AFDA3 focus:shadow-outline resize-y" placeholder="Hello Shanmukha, I'd like to discuss..." required></textarea>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit" class="form-submit-btn py-3 px-8 rounded-full flex items-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-12 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="text-2xl hover:text-3AFDA3 transition" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" class="text-2xl hover:text-3AFDA3 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-2xl hover:text-3AFDA3 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/in/shanmukha-harshit-a8b91b333/" target="_blank" class="text-2xl hover:text-3AFDA3 transition" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400">© 2023 Shanmukha Harshit Valluru. All rights reserved.</p>
+                    <p class="text-sm text-gray-500 mt-2">Designed & Built by Shanmukha Harshit Valluru</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default anchor click behavior
+                // Scroll to the target section with smooth animation
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in animations on sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // If the section is intersecting (in view), add the fade-in animation class
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the section is visible
+        });
+
+        // Observe all sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
